@@ -70,8 +70,8 @@ public class PlayerControlSystem implements IEntityProcessingService {
     }
 
     private void playerShootBullet(PositionPart positionPartPlayer, World world) {
-        Entity bullet = bulletPlugin.createBullet(positionPartPlayer);
-        world.addEntity(bullet);
+        world.addEntity(bulletPlugin.createBullet(positionPartPlayer));
+        System.out.println("PEW");
     }
 
 }

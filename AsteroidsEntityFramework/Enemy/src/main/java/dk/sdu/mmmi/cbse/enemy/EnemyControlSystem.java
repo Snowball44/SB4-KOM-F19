@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package dk.sdu.mmmi.cbse.enemy;
+import dk.sdu.mmmi.cbse.bullet.BulletPlugin;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
@@ -19,7 +21,10 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
  * @author Kim Christensen
  */
 public class EnemyControlSystem implements IEntityProcessingService {
-
+    BulletPlugin bulletPlugin;
+    public EnemyControlSystem(BulletPlugin bulletPlugin){
+        this.bulletPlugin = bulletPlugin;
+    }
     @Override
     public void process(GameData gameData, World world) {
         for (Entity enemy : world.getEntities(Enemy.class)) {
@@ -29,7 +34,9 @@ public class EnemyControlSystem implements IEntityProcessingService {
             movingPart.setLeft(Math.random()<0.5);
             movingPart.setUp(Math.random()<0.5);
             movingPart.setRight(Math.random()<0.5);
-            
+            if((int) Math.ceil(Math.random() * 100) == 5){
+                enemyShootBullet(positionPart, world);
+            }
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
             updateShape(enemy);
@@ -59,6 +66,11 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
+    }
+
+    private void enemyShootBullet(PositionPart positionPartEnemy, World world) {
+        world.addEntity(bulletPlugin.createBullet(positionPartEnemy));
+        System.out.println("PEW");
     }
     
 }

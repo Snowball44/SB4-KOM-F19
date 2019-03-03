@@ -5,7 +5,6 @@
  */
 package dk.sdu.mmmi.cbse.bullet;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -23,20 +22,20 @@ public class BulletPlugin implements IGamePluginService {
     public BulletPlugin() {
         
     }
-    private Entity bullet;
     @Override
     public void start(GameData gameData, World world) {
         //Nothing
     }
     
     public Entity createBullet(PositionPart positionPartPlayer){
+        Bullet bullet = new Bullet();
         float deacceleration = 0;
         float acceleration = 200;
         float maxSpeed = 300;
         float rotationSpeed = 0;
         float radians = positionPartPlayer.getRadians();
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
-        bullet.add(positionPartPlayer);
+        bullet.add(new PositionPart(positionPartPlayer.getX(), positionPartPlayer.getY(), positionPartPlayer.getRadians()));
         return bullet;
     }
 

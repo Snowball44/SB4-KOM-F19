@@ -13,6 +13,8 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
+import dk.sdu.mmmi.cbse.enemy.EnemyPlugin;
+import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import java.util.ArrayList;
 import java.util.List;
 

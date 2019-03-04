@@ -11,6 +11,7 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.services.IBullet;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -22,7 +23,7 @@ import static java.lang.Math.sqrt;
  */
 public class PlayerControlSystem implements IEntityProcessingService {
     
-    BulletPlugin bulletPlugin;
+    IBullet bulletPlugin;
     public PlayerControlSystem(BulletPlugin bulletPlugin){
         this.bulletPlugin = bulletPlugin;
     }

@@ -10,6 +10,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.services.IBullet;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Kim
  */
-public class BulletPlugin implements IGamePluginService {
+public class BulletPlugin implements IGamePluginService, IBullet {
     
     public BulletPlugin() {
         
@@ -26,7 +27,7 @@ public class BulletPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
         //Nothing
     }
-    
+    @Override
     public Entity createBullet(PositionPart positionPartPlayer){
         Bullet bullet = new Bullet();
         float deacceleration = 0;

@@ -1,0 +1,10 @@
+Identify missing components:
+
+Another component could be a sound component, that depending on what was going on what make different sounds. 
+
+It could loop through entities and upon collision play something. Each entity could then have a "soundpart" that would play a sound for specific reasons. 
+
+Specify at contract level: The required and provided interfaces based on identified components:
+
+The soundpart provide itself, and the entities require this soundpart. Entities must have been instantiated.
+ 

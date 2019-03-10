@@ -7,4 +7,6 @@ It could loop through entities and upon collision play something. Each entity co
 Specify at contract level: The required and provided interfaces based on identified components:
 
 The soundpart provide itself, and the entities require this soundpart. Entities must have been instantiated.
- 
+
+Precondition: Different entities must have been instantiated before applying a sound part.
+Postcondition: The entities have made their sound when a specific action happened. 

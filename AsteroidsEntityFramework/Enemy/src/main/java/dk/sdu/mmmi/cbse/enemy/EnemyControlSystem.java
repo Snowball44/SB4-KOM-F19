@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package dk.sdu.mmmi.cbse.enemy;
+import dk.sdu.mmmi.cbse.bullet.Bullet;
 import dk.sdu.mmmi.cbse.bullet.BulletPlugin;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
@@ -21,10 +22,6 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
  * @author Kim Christensen
  */
 public class EnemyControlSystem implements IEntityProcessingService {
-    BulletPlugin bulletPlugin;
-    public EnemyControlSystem(BulletPlugin bulletPlugin){
-        this.bulletPlugin = bulletPlugin;
-    }
     @Override
     public void process(GameData gameData, World world) {
         for (Entity enemy : world.getEntities(Enemy.class)) {
@@ -69,8 +66,15 @@ public class EnemyControlSystem implements IEntityProcessingService {
     }
 
     private void enemyShootBullet(PositionPart positionPartEnemy, World world) {
-        world.addEntity(bulletPlugin.createBullet(positionPartEnemy));
-        System.out.println("PEW");
+         Bullet bullet = new Bullet();
+        float deacceleration = 0;
+        float acceleration = 200;
+        float maxSpeed = 300;
+        float rotationSpeed = 0;
+        float radians = positionPartEnemy.getRadians();
+        bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
+        bullet.add(new PositionPart(positionPartEnemy.getX(), positionPartEnemy.getY(), positionPartEnemy.getRadians()));
+        world.addEntity(bullet);
     }
     
 }

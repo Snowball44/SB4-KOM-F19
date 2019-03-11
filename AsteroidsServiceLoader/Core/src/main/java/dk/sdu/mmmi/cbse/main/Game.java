@@ -10,6 +10,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.util.SPILocator;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import java.util.ArrayList;
@@ -69,6 +70,10 @@ public class Game
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
+        
+        for(IPostEntityProcessingService postEntityProcessingService : getPostEntityProcessingService()){
+            postEntityProcessingService.process(gameData, world);
+        }
     }
 
     private void draw() {
@@ -114,5 +119,9 @@ public class Game
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
         return SPILocator.locateAll(IEntityProcessingService.class);
+    }
+    
+    private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingService(){
+        return SPILocator.locateAll(IPostEntityProcessingService.class);
     }
 }

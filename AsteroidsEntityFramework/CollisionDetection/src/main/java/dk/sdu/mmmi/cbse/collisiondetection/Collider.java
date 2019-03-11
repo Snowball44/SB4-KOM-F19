@@ -27,6 +27,7 @@ public class Collider implements IPostEntityProcessingService {
             for (Entity collisionDetection : world.getEntities()) {
                 // get life parts on all entities
                 LifePart entityLife = entity.getPart(LifePart.class);
+                System.out.println("ENTITY IS NOW BEING TESTED "+entity.getClass());
                 LifePart collisionLife = collisionDetection.getPart(LifePart.class);
 
                 // if the two entities are identical, skip the iteration

@@ -23,11 +23,6 @@ import static java.lang.Math.sqrt;
  */
 public class PlayerControlSystem implements IEntityProcessingService {
     
-    IBullet bulletPlugin;
-    public PlayerControlSystem(BulletPlugin bulletPlugin){
-        this.bulletPlugin = bulletPlugin;
-    }
-
     @Override
     public void process(GameData gameData, World world) {
 
@@ -71,8 +66,15 @@ public class PlayerControlSystem implements IEntityProcessingService {
     }
 
     private void playerShootBullet(PositionPart positionPartPlayer, World world) {
-        world.addEntity(bulletPlugin.createBullet(positionPartPlayer));
-        System.out.println("PEW");
+        Bullet bullet = new Bullet();
+        float deacceleration = 0;
+        float acceleration = 200;
+        float maxSpeed = 300;
+        float rotationSpeed = 0;
+        float radians = positionPartPlayer.getRadians();
+        bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
+        bullet.add(new PositionPart(positionPartPlayer.getX(), positionPartPlayer.getY(), positionPartPlayer.getRadians()));
+        world.addEntity(bullet);
     }
 
 }

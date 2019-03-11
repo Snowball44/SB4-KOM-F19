@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Kim
  */
-public class BulletPlugin implements IGamePluginService, IBullet {
+public class BulletPlugin implements IGamePluginService {
     
     public BulletPlugin() {
         
@@ -26,18 +26,6 @@ public class BulletPlugin implements IGamePluginService, IBullet {
     @Override
     public void start(GameData gameData, World world) {
         //Nothing
-    }
-    @Override
-    public Entity createBullet(PositionPart positionPartPlayer){
-        Bullet bullet = new Bullet();
-        float deacceleration = 0;
-        float acceleration = 200;
-        float maxSpeed = 300;
-        float rotationSpeed = 0;
-        float radians = positionPartPlayer.getRadians();
-        bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
-        bullet.add(new PositionPart(positionPartPlayer.getX(), positionPartPlayer.getY(), positionPartPlayer.getRadians()));
-        return bullet;
     }
 
     @Override

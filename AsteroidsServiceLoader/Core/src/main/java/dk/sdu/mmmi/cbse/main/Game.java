@@ -74,6 +74,7 @@ public class Game
         for(IPostEntityProcessingService postEntityProcessingService : getPostEntityProcessingService()){
             postEntityProcessingService.process(gameData, world);
         }
+        System.out.println("Out of update for loop");
     }
 
     private void draw() {

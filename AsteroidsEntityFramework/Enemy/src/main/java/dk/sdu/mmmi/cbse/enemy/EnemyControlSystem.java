@@ -13,6 +13,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -74,6 +75,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         float radians = positionPartEnemy.getRadians();
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         bullet.add(new PositionPart(positionPartEnemy.getX(), positionPartEnemy.getY(), positionPartEnemy.getRadians()));
+        bullet.add(new LifePart(10, 5));
         world.addEntity(bullet);
     }
     

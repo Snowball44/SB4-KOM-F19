@@ -66,6 +66,7 @@ public class Collider implements IPostEntityProcessingService {
         float dy = (float) entMov.getY() - (float) entMov2.getY();
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
         if (distance < (entity.getRadius() + entity2.getRadius())) {
+            System.out.println("COLIDED!!");
             return true;
         }
         return false;

@@ -8,6 +8,7 @@ import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -68,6 +69,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         float radians = positionPartPlayer.getRadians();
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         bullet.add(new PositionPart(positionPartPlayer.getX(), positionPartPlayer.getY(), positionPartPlayer.getRadians()));
+        bullet.add(new LifePart(1, 5));
         world.addEntity(bullet);
     }
 

@@ -13,7 +13,11 @@
     <modules>
         <module>Core</module>
         <module>Common</module>
-        <module>Player</module>
+        <module>../AsteroidsEntityFramework/Bullet</module>
+        <module>../AsteroidsEntityFramework/Enemy</module>
+        <module>../AsteroidsEntityFramework/Player</module>
+        <module>../AsteroidsEntityFramework/mavenproject1/Asteroid</module>
+        <module>../AsteroidsEntityFramework/CollisionDetection</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        

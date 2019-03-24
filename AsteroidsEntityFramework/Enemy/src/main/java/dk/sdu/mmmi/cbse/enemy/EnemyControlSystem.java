@@ -75,7 +75,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         float radians = positionPartEnemy.getRadians();
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         bullet.add(new PositionPart(positionPartEnemy.getX(), positionPartEnemy.getY(), positionPartEnemy.getRadians()));
-        bullet.add(new LifePart(10, 5));
+        bullet.add(new LifePart(10,10));
         world.addEntity(bullet);
     }
     

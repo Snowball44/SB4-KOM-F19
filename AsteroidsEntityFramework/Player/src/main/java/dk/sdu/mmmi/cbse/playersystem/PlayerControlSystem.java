@@ -69,7 +69,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         float radians = positionPartPlayer.getRadians();
         bullet.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         bullet.add(new PositionPart(positionPartPlayer.getX(), positionPartPlayer.getY(), positionPartPlayer.getRadians()));
-        bullet.add(new LifePart(1, 5));
+        bullet.add(new LifePart(1,10));
         world.addEntity(bullet);
     }
 

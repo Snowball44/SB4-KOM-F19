@@ -42,7 +42,7 @@ private Entity asteroid;
         Entity asteroidEntity = new Asteroid();
         asteroidEntity.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
         asteroidEntity.add(new PositionPart(x, y, radians));
-        asteroidEntity.add(new LifePart(10,10));
+        asteroidEntity.add(new LifePart(10, 5));
         return asteroidEntity;
     }
     
